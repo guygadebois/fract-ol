@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/01 21:02:12 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/20 17:20:25 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/20 17:48:11 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ int		ft_key_hook(unsigned int key, void *data)
 	xdata = (t_xdata *)data;
 	if (key == 65307)
 	{
-		mlx_destroy_window(xdata->ptr, xdata->win);
-		xdata->win = NULL;
-		ft_clean_prog();
+		ft_clean_prog(xdata);
 		exit(EXIT_SUCCESS);
 	}
 	/* if (key == KEY_RIGHT) */
@@ -43,11 +41,7 @@ int		ft_key_hook(unsigned int key, void *data)
 
 int		ft_expose_hook(void *param)
 {
-	t_xdata	*xdata;
-
-	xdata = (t_xdata *)param;
-	mlx_put_image_to_window(xdata->ptr, xdata->win,		\
-							xdata->img.img_ptr, 0, 0);
+	(void)param;
 	return (0);
 }
 

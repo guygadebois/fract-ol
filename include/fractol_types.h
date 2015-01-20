@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:23:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/20 17:19:35 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/20 18:03:07 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@
 # define BUTTONPRESSMASK	(1L<<2)
 # define BUTTONPRESS		4
 
+# define MOUSE_BTN_SCROLL_DOWN	4
 # define MOUSE_BTN_SCROLL_UP	5
-# define MOUSE_BTN_SCROLL_DOWN	7
 
 # define FT_BLACK		0x000000
+# define FT_WHITE		0xFFFFFF
 
 typedef struct		s_img
 {
@@ -43,7 +44,9 @@ typedef struct		s_xdata
 {
 	void		*ptr;
 	void		*win;
-	t_img		img;
+	t_img		*img1;
+	t_img		*img2;
+	int			img_nbr;
 }					t_xdata;
 
 typedef struct		s_data

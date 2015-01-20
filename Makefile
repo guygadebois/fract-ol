@@ -6,7 +6,7 @@
 #    By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 11:58:46 by glourdel          #+#    #+#              #
-#    Updated: 2015/01/20 15:40:00 by glourdel         ###   ########.fr        #
+#    Updated: 2015/01/20 17:13:51 by glourdel         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -83,7 +83,8 @@ re:	fclean all
 r:	sclean all
 
 
-obj/ft_clean_prog.o: src//ft_clean_prog.c
+obj/ft_clean_prog.o: src//ft_clean_prog.c include/fractol.h \
+ include/fractol_types.h
 	@echo "\033[32m    --> Creating obj/ft_clean_prog.o ...\033[0m"
 	@mkdir -p $(OBJDIR);
 	@$(CC) -o $(OBJDIR)ft_clean_prog.o \
