@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:23:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/20 16:47:58 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/20 17:19:35 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 
 # define KEYPRESSMASK	1L<<0
 # define KEYPRESS		2
+# define POINTERMOTIONMASK	(1L<<6)
+# define MOTIONNOTIFY		6
+# define BUTTONPRESSMASK	(1L<<2)
+# define BUTTONPRESS		4
+
+# define MOUSE_BTN_SCROLL_UP	5
+# define MOUSE_BTN_SCROLL_DOWN	7
 
 # define FT_BLACK		0x000000
 

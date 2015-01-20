@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:16:36 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/20 16:01:22 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/20 17:18:16 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int			ft_mlx_getcolor(unsigned int r, unsigned int g, unsigned int b);
 int			ft_keypr_hook(int key, void *param);
 int			ft_key_hook(unsigned int key, void *data);
 int			ft_expose_hook(void *param);
+int			ft_mouse_motion_hook(int x, int y, void *param);
+int			ft_btn_press_hook (int button, int x, int y, void *param);
 int			ft_loop(void *param);
 
 void		ft_clean_prog(void);

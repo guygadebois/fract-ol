@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/01 11:04:12 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/20 16:17:27 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/20 17:16:42 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int			main(int ac, char **av)
 	mlx_expose_hook(xdata.win, &ft_expose_hook, &xdata);
 	mlx_key_hook(xdata.win, &ft_key_hook, &xdata);
 	mlx_hook(xdata.win, KEYPRESS, KEYPRESSMASK, &ft_keypr_hook, &xdata);
+	mlx_hook(xdata.win, MOTIONNOTIFY, POINTERMOTIONMASK, &ft_mouse_motion_hook, &xdata);
+	mlx_hook(xdata.win, BUTTONPRESS, BUTTONPRESSMASK, &ft_btn_press_hook, &xdata);
 	mlx_loop_hook(xdata.ptr, &ft_loop, &xdata);
 	mlx_loop(xdata.ptr);
 	ft_clean_prog();

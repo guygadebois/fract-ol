@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/01 21:02:12 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/20 16:17:02 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/20 17:20:25 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,28 @@ int		ft_expose_hook(void *param)
 	xdata = (t_xdata *)param;
 	mlx_put_image_to_window(xdata->ptr, xdata->win,		\
 							xdata->img.img_ptr, 0, 0);
+	return (0);
+}
+
+#include <stdio.h> // TODO
+int		ft_mouse_motion_hook(int x, int y, void *param)
+{
+	(void)param;
+	dprintf (0, "x: %d, y: %d\n", x, y); //TODO
+	return (0);
+}
+
+int		ft_btn_press_hook (int button, int x, int y, void *param)
+{
+	(void)param;
+	dprintf (0, "button: %d, x: %d, y: %d\n", button, x, y); // TODO
+	if (button == MOUSE_BTN_SCROLL_UP)
+	{
+		// TODO
+	}
+	else if (button == MOUSE_BTN_SCROLL_DOWN)
+	{
+		// TODO
+	}
 	return (0);
 }
