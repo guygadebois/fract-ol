@@ -6,7 +6,7 @@
 #    By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 11:58:46 by glourdel          #+#    #+#              #
-#    Updated: 2015/01/21 16:41:12 by glourdel         ###   ########.fr        #
+#    Updated: 2015/01/22 14:26:06 by glourdel         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,12 +15,13 @@
 
 export CC = gcc
 NAME = fractol
-FLAGS = -Wall -Wextra -Werror -pthread -ggdb
+FLAGS = -Wall -Wextra -Werror -pthread -O3
 
 OFILES = $(notdir $(CFILES:.c=.o))
 
 CFILES= \
 		/ft_clean_prog.c \
+		/ft_colors.c \
 		/ft_draw_julia.c \
 		/ft_errors.c \
 		/ft_hooks.c \
@@ -31,6 +32,7 @@ CFILES= \
 		/ft_mlx_gotopix.c \
 		/ft_render.c \
 		/ft_threads.c \
+		/ft_tools.c \
 		/main.c \
 
 
@@ -92,6 +94,12 @@ obj/ft_clean_prog.o: src//ft_clean_prog.c include/fractol.h \
 	@mkdir -p $(OBJDIR);
 	@$(CC) -o $(OBJDIR)ft_clean_prog.o \
 -c -fPIC $(SRCDIR)/ft_clean_prog.c $(CFLAGS)
+
+obj/ft_colors.o: src//ft_colors.c
+	@echo "\033[32m    --> Creating obj/ft_colors.o ...\033[0m"
+	@mkdir -p $(OBJDIR);
+	@$(CC) -o $(OBJDIR)ft_colors.o \
+-c -fPIC $(SRCDIR)/ft_colors.c $(CFLAGS)
 
 obj/ft_draw_julia.o: src//ft_draw_julia.c include/fractol.h \
  include/fractol_types.h
@@ -158,6 +166,12 @@ obj/ft_threads.o: src//ft_threads.c include/fractol.h include/fractol_types.h
 	@mkdir -p $(OBJDIR);
 	@$(CC) -o $(OBJDIR)ft_threads.o \
 -c -fPIC $(SRCDIR)/ft_threads.c $(CFLAGS)
+
+obj/ft_tools.o: src//ft_tools.c include/fractol.h include/fractol_types.h
+	@echo "\033[32m    --> Creating obj/ft_tools.o ...\033[0m"
+	@mkdir -p $(OBJDIR);
+	@$(CC) -o $(OBJDIR)ft_tools.o \
+-c -fPIC $(SRCDIR)/ft_tools.c $(CFLAGS)
 
 obj/main.o: src//main.c include/fractol.h include/fractol_types.h
 	@echo "\033[32m    --> Creating obj/main.o ...\033[0m"
