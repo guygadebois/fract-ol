@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:23:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/20 18:03:07 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/21 17:40:16 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,25 @@ typedef struct		s_xdata
 
 typedef struct		s_data
 {
-	//TODO
+	t_xdata		*xdata;
+	float		zoom;
+	int			z0;
+	int			c;
 }					t_data;
+
+typedef struct		s_rect
+{
+	int			x;
+	int			y;
+	int			h;
+	int			w;
+}					t_rect;
+
+typedef struct		s_thread_data
+{
+	t_data		*data;
+	t_img		*img;
+	t_rect		*rect;
+}					t_thread_data;
 
 #endif	/* FRACTOL_types_H */

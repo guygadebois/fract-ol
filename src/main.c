@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/01 11:04:12 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/20 18:03:47 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/21 17:42:41 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ static int	ft_mlx_init(t_xdata *data)
 	return (1);
 }
 
-
 int			main(int ac, char **av)
 {
+	t_data		data;
 	t_xdata		xdata;
 
+	data.xdata = &xdata;
 	(void)av; //TODO
 	if (ac != 2 && ac != 3)
 		return (ft_err_usage());
@@ -69,6 +70,9 @@ int			main(int ac, char **av)
 	mlx_hook(xdata.win, MOTIONNOTIFY, POINTERMOTIONMASK, &ft_mouse_motion_hook, &xdata);
 	mlx_hook(xdata.win, BUTTONPRESS, BUTTONPRESSMASK, &ft_btn_press_hook, &xdata);
 	mlx_loop_hook(xdata.ptr, &ft_loop, &xdata);
+	ft_render(&data, xdata.img1, &ft_draw_julia);
+	if (ac == 3)
+		ft_render(&data, xdata.img2, &ft_draw_julia);
 	mlx_loop(xdata.ptr);
 	ft_clean_prog(&xdata);
 	return (0);

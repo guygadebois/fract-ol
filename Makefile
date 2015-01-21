@@ -6,7 +6,7 @@
 #    By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 11:58:46 by glourdel          #+#    #+#              #
-#    Updated: 2015/01/20 17:13:51 by glourdel         ###   ########.fr        #
+#    Updated: 2015/01/21 16:41:12 by glourdel         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,12 +15,13 @@
 
 export CC = gcc
 NAME = fractol
-FLAGS = -Wall -Wextra -Werror -ggdb
+FLAGS = -Wall -Wextra -Werror -pthread -ggdb
 
 OFILES = $(notdir $(CFILES:.c=.o))
 
 CFILES= \
 		/ft_clean_prog.c \
+		/ft_draw_julia.c \
 		/ft_errors.c \
 		/ft_hooks.c \
 		/ft_keypr_hook.c \
@@ -28,6 +29,8 @@ CFILES= \
 		/ft_mlx_fill_pix.c \
 		/ft_mlx_getcolor.c \
 		/ft_mlx_gotopix.c \
+		/ft_render.c \
+		/ft_threads.c \
 		/main.c \
 
 
@@ -90,6 +93,13 @@ obj/ft_clean_prog.o: src//ft_clean_prog.c include/fractol.h \
 	@$(CC) -o $(OBJDIR)ft_clean_prog.o \
 -c -fPIC $(SRCDIR)/ft_clean_prog.c $(CFLAGS)
 
+obj/ft_draw_julia.o: src//ft_draw_julia.c include/fractol.h \
+ include/fractol_types.h
+	@echo "\033[32m    --> Creating obj/ft_draw_julia.o ...\033[0m"
+	@mkdir -p $(OBJDIR);
+	@$(CC) -o $(OBJDIR)ft_draw_julia.o \
+-c -fPIC $(SRCDIR)/ft_draw_julia.c $(CFLAGS)
+
 obj/ft_errors.o: src//ft_errors.c libft/include/libft.h \
  libft/include/libft_types.h
 	@echo "\033[32m    --> Creating obj/ft_errors.o ...\033[0m"
@@ -136,6 +146,18 @@ obj/ft_mlx_gotopix.o: src//ft_mlx_gotopix.c include/fractol.h \
 	@mkdir -p $(OBJDIR);
 	@$(CC) -o $(OBJDIR)ft_mlx_gotopix.o \
 -c -fPIC $(SRCDIR)/ft_mlx_gotopix.c $(CFLAGS)
+
+obj/ft_render.o: src//ft_render.c include/fractol.h include/fractol_types.h
+	@echo "\033[32m    --> Creating obj/ft_render.o ...\033[0m"
+	@mkdir -p $(OBJDIR);
+	@$(CC) -o $(OBJDIR)ft_render.o \
+-c -fPIC $(SRCDIR)/ft_render.c $(CFLAGS)
+
+obj/ft_threads.o: src//ft_threads.c include/fractol.h include/fractol_types.h
+	@echo "\033[32m    --> Creating obj/ft_threads.o ...\033[0m"
+	@mkdir -p $(OBJDIR);
+	@$(CC) -o $(OBJDIR)ft_threads.o \
+-c -fPIC $(SRCDIR)/ft_threads.c $(CFLAGS)
 
 obj/main.o: src//main.c include/fractol.h include/fractol_types.h
 	@echo "\033[32m    --> Creating obj/main.o ...\033[0m"
