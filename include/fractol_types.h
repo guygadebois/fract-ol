@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:23:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/22 16:46:28 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/22 17:14:29 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct		s_img
 	int			color3;
 	int			color4;
 	float		zoom;
+	float		default_zoom;
 	float		c_x;
 	float		c_y;
 	float		z0_x;
@@ -67,6 +68,8 @@ typedef struct		s_data
 {
 	t_xdata		*xdata;
 	int			pause;
+	int			mouse_x;
+	int			mouse_y;
 }					t_data;
 
 typedef struct		s_rect

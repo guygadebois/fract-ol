@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:16:36 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/22 15:44:56 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/22 17:18:16 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ int			ft_mult_colors(int c1, int c2);
 int			ft_blend_colors(int c1, int c2);
 
 void		ft_data_init(t_data *data);
+
+void		ft_zoom_in(t_data* data);
+void		ft_zoom_out(t_data* data);
 
 #endif	/* FRACTOL_H */

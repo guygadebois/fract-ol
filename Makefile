@@ -33,6 +33,7 @@ CFILES= \
 		/ft_render.c \
 		/ft_threads.c \
 		/ft_tools.c \
+		/ft_zoom.c \
 		/main.c \
 
 
@@ -172,6 +173,12 @@ obj/ft_tools.o: src//ft_tools.c include/fractol.h include/fractol_types.h
 	@mkdir -p $(OBJDIR);
 	@$(CC) -o $(OBJDIR)ft_tools.o \
 -c -fPIC $(SRCDIR)/ft_tools.c $(CFLAGS)
+
+obj/ft_zoom.o: src//ft_zoom.c include/fractol.h include/fractol_types.h
+	@echo "\033[32m    --> Creating obj/ft_zoom.o ...\033[0m"
+	@mkdir -p $(OBJDIR);
+	@$(CC) -o $(OBJDIR)ft_zoom.o \
+-c -fPIC $(SRCDIR)/ft_zoom.c $(CFLAGS)
 
 obj/main.o: src//main.c include/fractol.h include/fractol_types.h
 	@echo "\033[32m    --> Creating obj/main.o ...\033[0m"
