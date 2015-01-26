@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 16:34:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/04/15 15:41:24 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/04/15 15:42:27 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "fractol.h"
-
+#include <stdio.h> //TODO
 static int	julia_calc_color(t_data *data, t_img *img, int x, int y)
 {
 	int		color;
@@ -32,13 +32,14 @@ static int	julia_calc_color(t_data *data, t_img *img, int x, int y)
 		z_x = z_x * z_x - z_y * z_y + img->c_x;
 		z_y = 2.f * old_x * z_y + img->c_y;
 	}
+	depth %= img->mod;
 	if (depth == 0)
 		color = img->color4;
 	else if (depth == JULIA_DEPTH)
 		color = img->color1;
 	else if (depth > 0 && depth < 32)
 		color = ft_add_colors (ft_mult_color(img->color3, \
-									(float)depth / (float)32), img->color4);
+											 (float)depth / (float)(img->mod < 32 ? img->mod : 32)), img->color4);
 	else
 		color = ft_mult_color (img->color2, (float)depth / (float) JULIA_DEPTH);
 	return (mlx_get_color_value(data->xdata->ptr, color));

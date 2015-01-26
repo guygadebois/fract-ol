@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:23:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 12:27:00 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 14:34:47 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct		s_img
 	float		z0_x;
 	float		z0_y;
 	void		*(*draw_func)(void *);
+	int			mod;
 }					t_img;
 
 typedef struct		s_xdata

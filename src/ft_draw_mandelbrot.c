@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 12:26:28 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 13:37:42 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 14:26:28 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,24 @@ static int	mandelbrot_calc_color(t_data *data, t_img *img, int x, int y)
 	float	old_x;
 
 	depth = 0;
-//	dprintf(0, "DBG 0\n");
 	img->c_x = (float)(x - img->width / 2) / img->zoom;
 	img->c_y = (float)(y - img->height / 2) / img->zoom;
-//	dprintf(0, "DBG 1\n");
 	z_x = img->z0_x;
 	z_y = img->z0_y;
 	while (z_x * z_x + z_y * z_y < 4.f && ++depth < MANDELBROT_DEPTH)
 	{
-//		dprintf(0, "DBG 2\n");
 		old_x = z_x;
 		z_x = z_x * z_x - z_y * z_y + img->c_x;
 		z_y = 2.f * old_x * z_y + img->c_y;
 	}
+	depth %= img->mod;
 	if (depth == 0)
 		color = img->color4;
 	else if (depth == MANDELBROT_DEPTH)
 		color = img->color1;
 	else if (depth > 0 && depth < 32)
 		color = ft_add_colors (ft_mult_color(img->color3, \
-									(float)depth / (float)32), img->color4);
+											 (float)depth / (float)(img->mod < 32 ? img->mod : 32)), img->color4);
 	else
 		color = ft_mult_color (img->color2, (float)depth / (float)MANDELBROT_DEPTH);
 	return (mlx_get_color_value(data->xdata->ptr, color));

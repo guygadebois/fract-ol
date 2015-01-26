@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/01 21:02:12 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 13:44:30 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 14:37:35 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int		ft_key_hook(unsigned int key, void *param)
 		ft_zoom_in(data);
 	else if (key == 65453)
 		ft_zoom_out(data);
+	else if (key == 109)
+		ft_decr_modulo(data);
+	else if (key == 110)
+		ft_incr_modulo(data);
 	/* if (key == KEY_RIGHT) */
 	/* 	((t_data *)data)->turn_right = 0; */
 	/* else if (key == KEY_LEFT) */

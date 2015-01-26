@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:16:36 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 13:56:39 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 14:36:52 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int			ft_data_init(t_data *data, char **av);
 
 void		ft_zoom_in(t_data* data);
 void		ft_zoom_out(t_data* data);
+void		ft_decr_modulo(t_data* data);
+void		ft_incr_modulo(t_data* data);
 
 #endif	/* FRACTOL_H */

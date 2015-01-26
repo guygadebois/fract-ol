@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 17:47:01 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 13:59:27 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 14:36:17 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,15 @@ static int	ft_min(int a, int b)
 static int	set_draw_function(t_img *img, char *arg)
 {
 	if (ft_strcmp(arg, "julia") == 0)
+	{
 		img->draw_func = &ft_draw_julia;
+		img->mod = JULIA_DEPTH;
+	}
 	else if (ft_strcmp(arg, "mandelbrot") == 0)
+	{
 		img->draw_func = &ft_draw_mandelbrot;
+		img->mod = MANDELBROT_DEPTH;
+	}
 	else
 	{
 		ft_putstr_fd("Error: unknown fractal type: ", 2);
