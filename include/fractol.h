@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:16:36 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 14:54:01 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 15:41:28 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int			ft_mult_colors(int c1, int c2);
 int			ft_blend_colors(int c1, int c2);
 
 int			ft_data_init(t_data *data, char **av);
+void		ft_read_colors(t_data *data);
 
 void		ft_zoom_in(t_data* data);
 void		ft_zoom_out(t_data* data);

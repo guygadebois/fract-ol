@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 12:26:28 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 14:52:20 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 16:36:52 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	mandelbrot_calc_color(t_data *data, t_img *img, int x, int y)
 	z_y = img->z0_y;
 	while (z_x * z_x + z_y * z_y < 4.f && ++depth < MANDELBROT_DEPTH)
 		update_values(img, &z_x, &z_y);
-	depth %= img->mod;
+	depth = depth == MANDELBROT_DEPTH ? MANDELBROT_DEPTH : depth % img->mod;
 	if (depth == 0)
 		color = img->color4;
 	else if (depth == MANDELBROT_DEPTH)

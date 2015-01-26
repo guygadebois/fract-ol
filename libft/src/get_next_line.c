@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/02 22:15:09 by glourdel          #+#    #+#             */
-/*   Updated: 2014/01/22 17:08:59 by glourdel         ###   ########.fr       */
+/*   Updated: 2013/12/10 12:14:14 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int		merge_list(t_bufdata *data, char **line, int read_line_ret)
 
 	len = 0;
 	data->beg_ptr = data->list;
+	if (read_line_ret == 0)
+		return (0);
 	while (data->beg_ptr)
 	{
 		len += data->beg_ptr->content_size;
@@ -27,15 +29,13 @@ static int		merge_list(t_bufdata *data, char **line, int read_line_ret)
 	}
 	if ((*line = ft_strnew(len)))
 	{
-		data->beg_ptr = data->list;
-		while (data->beg_ptr)
+		while (data->list)
 		{
-			*line = ft_strcat(*line, (char *)data->beg_ptr->content);
-			data->beg_ptr = data->beg_ptr->next;
+			*line = ft_strcat(*line, (char *)data->list->content);
+			data->list = data->list->next;
 		}
 		ft_lstclear(&data->list);
-		ft_strdel(&data->buf);
-		return (!(read_line_ret == 0 && len == 0));
+		return (1);
 	}
 	ft_lstclear(&data->list);
 	ft_strdel(&data->buf);

@@ -32,6 +32,7 @@ CFILES= \
 		/ft_mlx_fill_pix.c \
 		/ft_mlx_getcolor.c \
 		/ft_mlx_gotopix.c \
+		/ft_read_colors.c \
 		/ft_render.c \
 		/ft_threads.c \
 		/ft_tools.c \
@@ -171,6 +172,14 @@ obj/ft_mlx_gotopix.o: src//ft_mlx_gotopix.c include/fractol.h \
 	@mkdir -p $(OBJDIR);
 	@$(CC) -o $(OBJDIR)ft_mlx_gotopix.o \
 -c -fPIC $(SRCDIR)/ft_mlx_gotopix.c $(CFLAGS)
+
+obj/ft_read_colors.o: src//ft_read_colors.c include/fractol.h \
+ include/fractol_types.h libft/include/get_next_line.h \
+ libft/include/libft.h libft/include/libft_types.h
+	@echo "\033[32m    --> Creating obj/ft_read_colors.o ...\033[0m"
+	@mkdir -p $(OBJDIR);
+	@$(CC) -o $(OBJDIR)ft_read_colors.o \
+-c -fPIC $(SRCDIR)/ft_read_colors.c $(CFLAGS)
 
 obj/ft_render.o: src//ft_render.c include/fractol.h include/fractol_types.h
 	@echo "\033[32m    --> Creating obj/ft_render.o ...\033[0m"

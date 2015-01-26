@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 16:34:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/04/15 15:42:48 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/04/15 15:43:18 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	julia_calc_color(t_data *data, t_img *img, int x, int y)
 	z_y = (float)(y - img->height / 2) / img->zoom;
 	while (z_x * z_x + z_y * z_y < 4.f && ++depth < JULIA_DEPTH)
 		update_values (img, &z_x, &z_y);
-	depth %= img->mod;
+	depth = depth == JULIA_DEPTH ? JULIA_DEPTH : depth % img->mod;
 	if (depth == 0)
 		color = img->color4;
 	else if (depth == JULIA_DEPTH)

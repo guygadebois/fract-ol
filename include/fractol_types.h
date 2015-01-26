@@ -6,15 +6,15 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:23:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 15:07:59 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 16:40:05 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_types_H
 # define FRACTOL_types_H
 
-# define WINDOW_WIDTH	800
-# define WINDOW_HEIGHT	800
+# define WINDOW_WIDTH	600
+# define WINDOW_HEIGHT	600
 
 # define KEYPRESSMASK	1L<<0
 # define KEYPRESS		2
