@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:23:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 14:34:47 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 15:07:59 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 # define JULIA_DEPTH			100
 # define MANDELBROT_DEPTH		100
-
+# define EXP_DEPTH				15
 
 typedef struct		s_img
 {

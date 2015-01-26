@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:16:36 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 14:36:52 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 14:54:01 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		ft_render(t_data *data, t_img *img, void *(*draw_func)(void *));
 
 void		*ft_draw_julia(void *thread_data);
 void		*ft_draw_mandelbrot(void *thread_data);
+void		*ft_draw_exp(void *thread_data);
 
 int			ft_add_colors(int c1, int c2);
 int			ft_mult_color(int c, float mult);

@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 16:34:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/04/15 15:42:27 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/04/15 15:42:48 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 #include <stdlib.h>
 #include <math.h>
 #include "fractol.h"
-#include <stdio.h> //TODO
+
+static void	update_values(t_img *img, float *z_x, float *z_y)
+{
+	float	old_x;
+
+	old_x = *z_x;
+	*z_x = *z_x * *z_x - *z_y * *z_y + img->c_x;
+	*z_y = 2.f * old_x * *z_y + img->c_y;
+}
+
 static int	julia_calc_color(t_data *data, t_img *img, int x, int y)
 {
 	int		color;
 	float	z_x;
 	float	z_y;
 	int		depth;
-	float	old_x;
 
 	depth = 0;
 	z_x = (float)(x - img->width / 2) / img->zoom;
 	z_y = (float)(y - img->height / 2) / img->zoom;
 	while (z_x * z_x + z_y * z_y < 4.f && ++depth < JULIA_DEPTH)
-	{
-		old_x = z_x;
-		z_x = z_x * z_x - z_y * z_y + img->c_x;
-		z_y = 2.f * old_x * z_y + img->c_y;
-	}
+		update_values (img, &z_x, &z_y);
 	depth %= img->mod;
 	if (depth == 0)
 		color = img->color4;
@@ -39,7 +43,7 @@ static int	julia_calc_color(t_data *data, t_img *img, int x, int y)
 		color = img->color1;
 	else if (depth > 0 && depth < 32)
 		color = ft_add_colors (ft_mult_color(img->color3, \
-											 (float)depth / (float)(img->mod < 32 ? img->mod : 32)), img->color4);
+(float)depth / (float)(img->mod < 32 ? img->mod : 32)), img->color4);
 	else
 		color = ft_mult_color (img->color2, (float)depth / (float) JULIA_DEPTH);
 	return (mlx_get_color_value(data->xdata->ptr, color));

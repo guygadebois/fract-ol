@@ -22,6 +22,7 @@ OFILES = $(notdir $(CFILES:.c=.o))
 CFILES= \
 		/ft_clean_prog.c \
 		/ft_colors.c \
+		/ft_draw_exp.c \
 		/ft_draw_julia.c \
 		/ft_draw_mandelbrot.c \
 		/ft_errors.c \
@@ -102,6 +103,13 @@ obj/ft_colors.o: src//ft_colors.c
 	@mkdir -p $(OBJDIR);
 	@$(CC) -o $(OBJDIR)ft_colors.o \
 -c -fPIC $(SRCDIR)/ft_colors.c $(CFLAGS)
+
+obj/ft_draw_exp.o: src//ft_draw_exp.c include/fractol.h \
+ include/fractol_types.h
+	@echo "\033[32m    --> Creating obj/ft_draw_exp.o ...\033[0m"
+	@mkdir -p $(OBJDIR);
+	@$(CC) -o $(OBJDIR)ft_draw_exp.o \
+-c -fPIC $(SRCDIR)/ft_draw_exp.c $(CFLAGS)
 
 obj/ft_draw_julia.o: src//ft_draw_julia.c include/fractol.h \
  include/fractol_types.h

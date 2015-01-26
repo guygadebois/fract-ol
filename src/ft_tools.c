@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 17:47:01 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 14:36:17 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 14:54:29 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ static int	set_draw_function(t_img *img, char *arg)
 	{
 		img->draw_func = &ft_draw_mandelbrot;
 		img->mod = MANDELBROT_DEPTH;
+	}
+	else if (ft_strcmp(arg, "exp") == 0)
+	{
+		img->draw_func = &ft_draw_exp;
+		img->mod = EXP_DEPTH;
 	}
 	else
 	{
