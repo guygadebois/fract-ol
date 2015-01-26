@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 16:34:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/04/15 15:40:21 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/04/15 15:41:24 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	julia_calc_color(t_data *data, t_img *img, int x, int y)
 		color = ft_add_colors (ft_mult_color(img->color3, \
 									(float)depth / (float)32), img->color4);
 	else
-		color = img->color2;
+		color = ft_mult_color (img->color2, (float)depth / (float) JULIA_DEPTH);
 	return (mlx_get_color_value(data->xdata->ptr, color));
 }
 
