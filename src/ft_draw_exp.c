@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 14:53:05 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 15:09:36 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 16:51:46 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,24 @@
 #include <math.h>
 #include "fractol.h"
 
-static void	update_values(float *z_x, float *z_y)
+#define ABS(x) (x < 0 ? (x * -1) : (x))
+
+static void	update_values(float *z_x, float *z_y, float e)
 {
 	float	old_x;
 
-	old_x = *z_x;
-	*z_x = powf(10, *z_x) * cosf(*z_y);
-	*z_y = powf(10, old_x) * sinf(*z_y);
+	old_x = (*z_x);
+	if (e < 0.000000001f)
+	{
+		e *= -1.f;
+		*z_x = powf(e, *z_x) * cosf(*z_y);
+		*z_y = powf(e, old_x) * sinf(*z_y);
+	}
+	else
+	{
+		*z_x = powf(e, *z_x) * sinf(*z_y);
+		*z_y = powf(e, old_x) * cosf(*z_y);
+	}
 }
 
 static int	exp_calc_color(t_data *data, t_img *img, int x, int y)
@@ -35,7 +46,7 @@ static int	exp_calc_color(t_data *data, t_img *img, int x, int y)
 	z_x = (float)(x - img->width / 2) / img->zoom;
 	z_y = (float)(y - img->height / 2) / img->zoom;
 	while (z_x * z_x + z_y * z_y > 0.00001f && ++depth < EXP_DEPTH)
-		update_values (&z_x, &z_y);
+		update_values (&z_x, &z_y, img->c_x * 10);
 	depth %= img->mod;
 	if (depth == 0)
 		color = img->color4;

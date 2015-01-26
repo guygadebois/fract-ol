@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 17:47:01 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 15:14:10 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 16:54:16 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static int	set_draw_function(t_img *img, char *arg)
 	{
 		img->draw_func = &ft_draw_exp;
 		img->mod = EXP_DEPTH;
+		img->c_x = 0.22f;
+		img->c_y = 1.63333f;
 	}
 	else
 	{
@@ -49,8 +51,6 @@ int			ft_data_init(t_data *data, char **av)
 	int		w;
 	int		h;
 
-	if (!set_draw_function(data->xdata->img1, av[1]))
-		return (0);
 	data->pause = 0;
 	w = data->xdata->img1->width;
 	h = data->xdata->img1->height;
@@ -64,10 +64,10 @@ int			ft_data_init(t_data *data, char **av)
 	data->xdata->img1->color2 = 0x8855CC;
 	data->xdata->img1->color3 = 0x00FF00;
 	data->xdata->img1->color4 = 0x0;
+	if (!set_draw_function(data->xdata->img1, av[1]))
+		return (0);
 	if (data->xdata->img_nbr == 2)
 	{
-		if (!set_draw_function(data->xdata->img2, av[2]))
-			return (0);
 		w = data->xdata->img2->width;
 		h = data->xdata->img2->height;
 		data->xdata->img2->zoom = 1 / (4.f / (float)ft_min(w, h));
@@ -80,6 +80,8 @@ int			ft_data_init(t_data *data, char **av)
 		data->xdata->img2->color2 = 0x8855CC;
 		data->xdata->img2->color3 = 0x00FF00;
 		data->xdata->img2->color4 = 0x0;
+		if (!set_draw_function(data->xdata->img2, av[2]))
+			return (0);
 	}
 	return (1);
 }
