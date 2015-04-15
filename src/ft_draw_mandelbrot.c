@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 12:26:28 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 16:36:52 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 17:54:53 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ static int	mandelbrot_calc_color(t_data *data, t_img *img, int x, int y)
 		color = img->color1;
 	else if (depth > 0 && depth < 32)
 		color = ft_add_colors (ft_mult_color(img->color3, \
-											 (float)depth / (float)(img->mod < 32 ? img->mod : 32)), img->color4);
+		(float)depth / (float)(img->mod < 32 ? img->mod : 32)), img->color4);
 	else
-		color = ft_mult_color (img->color2, (float)depth / (float)MANDELBROT_DEPTH);
+		color = ft_mult_color (img->color2, (float)depth
+							/ (float)MANDELBROT_DEPTH);
 	return (mlx_get_color_value(data->xdata->ptr, color));
 }
 

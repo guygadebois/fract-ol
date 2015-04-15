@@ -6,12 +6,12 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:23:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 16:40:05 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 17:49:14 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_types_H
-# define FRACTOL_types_H
+#ifndef FRACTOL_TYPES_H
+# define FRACTOL_TYPES_H
 
 # define WINDOW_WIDTH	600
 # define WINDOW_HEIGHT	600
@@ -90,4 +90,4 @@ typedef struct		s_thread_data
 	t_rect		*rect;
 }					t_thread_data;
 
-#endif	/* FRACTOL_types_H */
+#endif

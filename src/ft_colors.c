@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 14:48:50 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/22 16:04:24 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 17:54:28 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ int			ft_mult_color(int c, float mult)
 
 int			ft_blend_colors(int c1, int c2)
 {
-	return (ft_add_colors(ft_mult_color(c1, 0.5f),
-						  ft_mult_color(c2, 0.5f)));
+	return (ft_add_colors(ft_mult_color(c1, 0.5f), ft_mult_color(c2, 0.5f)));
 }
 
 int			ft_mult_colors(int c1, int c2)

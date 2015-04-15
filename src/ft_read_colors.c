@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/26 15:15:36 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 16:31:05 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 17:56:45 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "fractol.h"
 #include "get_next_line.h"
 
-static void	treat_line(t_data *data, char* line)
+static void	treat_line(t_data *data, char *line)
 {
 	t_img	*img;
 	int		*color;
@@ -45,14 +45,12 @@ void		ft_read_colors(t_data *data)
 {
 	char	*line;
 	int		fd;
-	int		ret = -10;
 
 	line = NULL;
 	if ((fd = open("fractol.colors", O_RDONLY)) == -1)
 		return ;
-	while ((ret = get_next_line(fd, &line)) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
-		ft_putendl (line);
 		treat_line(data, line);
 		free(line);
 		line = NULL;

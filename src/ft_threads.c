@@ -6,17 +6,15 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 22:00:58 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/21 16:56:45 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 18:02:28 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "fractol.h"
 
-
 static pthread_t	launch_thread(t_data *data, t_img *img, t_rect *rect, \
-								  void *(*draw_func)(void *))
+								void *(*draw_func)(void *))
 {
 	pthread_t		thread;
 	t_thread_data	*thread_data;
@@ -31,14 +29,13 @@ static pthread_t	launch_thread(t_data *data, t_img *img, t_rect *rect, \
 	thread_data->rect = rect;
 	if (pthread_create(&thread, NULL, draw_func, thread_data))
 	{
-		perror("fractol threading");
 		return (0);
 	}
 	return (thread);
 }
 
 pthread_t			ft_launch_thread1(t_data *data, t_img *img, \
-									  void *(*draw_func)(void *))
+									void *(*draw_func)(void *))
 {
 	t_rect		*rect;
 
@@ -55,7 +52,7 @@ pthread_t			ft_launch_thread1(t_data *data, t_img *img, \
 }
 
 pthread_t			ft_launch_thread2(t_data *data, t_img *img, \
-									  void *(*draw_func)(void *))
+									void *(*draw_func)(void *))
 {
 	t_rect		*rect;
 
@@ -72,7 +69,7 @@ pthread_t			ft_launch_thread2(t_data *data, t_img *img, \
 }
 
 pthread_t			ft_launch_thread3(t_data *data, t_img *img, \
-									  void *(*draw_func)(void *))
+									void *(*draw_func)(void *))
 {
 	t_rect		*rect;
 
@@ -89,7 +86,7 @@ pthread_t			ft_launch_thread3(t_data *data, t_img *img, \
 }
 
 pthread_t			ft_launch_thread4(t_data *data, t_img *img, \
-									  void *(*draw_func)(void *))
+									void *(*draw_func)(void *))
 {
 	t_rect		*rect;
 
