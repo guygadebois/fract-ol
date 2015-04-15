@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/01 21:02:12 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/22 17:39:50 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 13:44:30 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,19 @@ int		ft_mouse_motion_hook(int x, int y, void *param)
 		img = data->xdata->img2;
 		img->c_x = (float)(x - img->width - img->width / 2) / img->default_zoom;
 		img->c_y = (float)(y - img->height / 2) / img->default_zoom;
+		img->z0_x = (float)(x - img->width - img->width / 2) / img->default_zoom;
+		img->z0_y = (float)(y - img->height / 2) / img->default_zoom;
 	}
 	else
 	{
 		img = data->xdata->img1;
 		img->c_x = (float)(x - img->width / 2) / img->default_zoom;
 		img->c_y = (float)(y - img->height / 2) / img->default_zoom;
+		img->z0_x = (float)(x - img->width / 2) / img->default_zoom;
+		img->z0_y = (float)(y - img->height / 2) / img->default_zoom;
 	}
 //	dprintf(0, "cx = %f, cy = %f\n", img->c_x, img->c_y);
-	ft_render (data, img, &ft_draw_julia);
+	ft_render (data, img, img->draw_func);
 	return (0);
 }
 

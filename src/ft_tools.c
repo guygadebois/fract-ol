@@ -6,22 +6,40 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 17:47:01 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/26 12:01:09 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 13:59:27 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "libft.h"
 
 static int	ft_min(int a, int b)
 {
 	return (a < b ? a : b);
 }
 
-void		ft_data_init(t_data *data)
+static int	set_draw_function(t_img *img, char *arg)
+{
+	if (ft_strcmp(arg, "julia") == 0)
+		img->draw_func = &ft_draw_julia;
+	else if (ft_strcmp(arg, "mandelbrot") == 0)
+		img->draw_func = &ft_draw_mandelbrot;
+	else
+	{
+		ft_putstr_fd("Error: unknown fractal type: ", 2);
+		ft_putendl_fd(arg, 2);
+		return (0);
+	}
+	return (1);
+}
+
+int			ft_data_init(t_data *data, char **av)
 {
 	int		w;
 	int		h;
 
+	if (!set_draw_function(data->xdata->img1, av[1]))
+		return (0);
 	data->pause = 0;
 	w = data->xdata->img1->width;
 	h = data->xdata->img1->height;
@@ -37,6 +55,8 @@ void		ft_data_init(t_data *data)
 	data->xdata->img1->color4 = 0x0;
 	if (data->xdata->img_nbr == 2)
 	{
+		if (!set_draw_function(data->xdata->img2, av[2]))
+			return (0);
 		w = data->xdata->img2->width;
 		h = data->xdata->img2->height;
 		data->xdata->img2->zoom = 1 / (4.f / (float)ft_min(w, h));
@@ -50,4 +70,5 @@ void		ft_data_init(t_data *data)
 		data->xdata->img2->color3 = 0x00FF00;
 		data->xdata->img2->color4 = 0x0;
 	}
+	return (1);
 }

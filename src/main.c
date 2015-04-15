@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/01 11:04:12 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/22 16:24:35 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 13:56:44 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,18 @@ int			main(int ac, char **av)
 			|| !ft_img_init (&xdata.img2, xdata.ptr, WINDOW_WIDTH / 2, WINDOW_HEIGHT))
 			return (1);
 	}
-	ft_data_init(&data);
+	if (!ft_data_init(&data, av))
+		return (1);
 	mlx_expose_hook(xdata.win, &ft_expose_hook, &xdata);
 	mlx_key_hook(xdata.win, &ft_key_hook, &data);
 	mlx_hook(xdata.win, KEYPRESS, KEYPRESSMASK, &ft_keypr_hook, &data);
 	mlx_hook(xdata.win, MOTIONNOTIFY, POINTERMOTIONMASK, &ft_mouse_motion_hook, &data);
 	mlx_hook(xdata.win, BUTTONPRESS, BUTTONPRESSMASK, &ft_btn_press_hook, &data);
 	mlx_loop_hook(xdata.ptr, &ft_loop, &xdata);
-	ft_render(&data, xdata.img1, &ft_draw_julia);
+	ft_render(&data, xdata.img1, xdata.img1->draw_func);
 	if (ac == 3)
 	{
-		ft_render(&data, xdata.img2, &ft_draw_julia);
+		ft_render(&data, xdata.img2, xdata.img2->draw_func);
 	}
 	mlx_loop(xdata.ptr);
 	ft_clean_prog(&xdata);

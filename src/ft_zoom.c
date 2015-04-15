@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 17:08:45 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/22 17:41:17 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 13:45:09 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		ft_zoom_in(t_data* data)
 	else
 		img = data->xdata->img1;
 	img->zoom *= 2.f;
-	ft_render (data, img, &ft_draw_julia);
+	ft_render (data, img, img->draw_func);
 }
 
 void		ft_zoom_out(t_data* data)
@@ -35,5 +35,5 @@ void		ft_zoom_out(t_data* data)
 	img->zoom *= 0.5f;
 	if (img->zoom < 0.005f)
 		img->zoom = 0.005f;
-	ft_render (data, img, &ft_draw_julia);
+	ft_render (data, img, img->draw_func);
 }

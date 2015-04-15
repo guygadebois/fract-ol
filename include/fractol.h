@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:16:36 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/22 17:18:16 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 13:56:39 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ pthread_t	ft_launch_thread4(t_data *data, t_img *img, \
 void		ft_render(t_data *data, t_img *img, void *(*draw_func)(void *));
 
 void		*ft_draw_julia(void *thread_data);
+void		*ft_draw_mandelbrot(void *thread_data);
 
 int			ft_add_colors(int c1, int c2);
 int			ft_mult_color(int c, float mult);
 int			ft_mult_colors(int c1, int c2);
 int			ft_blend_colors(int c1, int c2);
 
-void		ft_data_init(t_data *data);
+int			ft_data_init(t_data *data, char **av);
 
 void		ft_zoom_in(t_data* data);
 void		ft_zoom_out(t_data* data);

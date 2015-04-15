@@ -6,7 +6,7 @@
 /*   By: glourdel <glourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:23:35 by glourdel          #+#    #+#             */
-/*   Updated: 2015/01/22 17:14:29 by glourdel         ###   ########.fr       */
+/*   Updated: 2015/01/26 12:27:00 by glourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define FT_WHITE				0xFFFFFF
 
 # define JULIA_DEPTH			100
+# define MANDELBROT_DEPTH		100
 
 
 typedef struct		s_img
@@ -53,6 +54,7 @@ typedef struct		s_img
 	float		c_y;
 	float		z0_x;
 	float		z0_y;
+	void		*(*draw_func)(void *);
 }					t_img;
 
 typedef struct		s_xdata

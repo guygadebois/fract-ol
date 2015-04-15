@@ -23,6 +23,7 @@ CFILES= \
 		/ft_clean_prog.c \
 		/ft_colors.c \
 		/ft_draw_julia.c \
+		/ft_draw_mandelbrot.c \
 		/ft_errors.c \
 		/ft_hooks.c \
 		/ft_keypr_hook.c \
@@ -109,6 +110,13 @@ obj/ft_draw_julia.o: src//ft_draw_julia.c include/fractol.h \
 	@$(CC) -o $(OBJDIR)ft_draw_julia.o \
 -c -fPIC $(SRCDIR)/ft_draw_julia.c $(CFLAGS)
 
+obj/ft_draw_mandelbrot.o: src//ft_draw_mandelbrot.c include/fractol.h \
+ include/fractol_types.h
+	@echo "\033[32m    --> Creating obj/ft_draw_mandelbrot.o ...\033[0m"
+	@mkdir -p $(OBJDIR);
+	@$(CC) -o $(OBJDIR)ft_draw_mandelbrot.o \
+-c -fPIC $(SRCDIR)/ft_draw_mandelbrot.c $(CFLAGS)
+
 obj/ft_errors.o: src//ft_errors.c libft/include/libft.h \
  libft/include/libft_types.h
 	@echo "\033[32m    --> Creating obj/ft_errors.o ...\033[0m"
@@ -168,7 +176,8 @@ obj/ft_threads.o: src//ft_threads.c include/fractol.h include/fractol_types.h
 	@$(CC) -o $(OBJDIR)ft_threads.o \
 -c -fPIC $(SRCDIR)/ft_threads.c $(CFLAGS)
 
-obj/ft_tools.o: src//ft_tools.c include/fractol.h include/fractol_types.h
+obj/ft_tools.o: src//ft_tools.c include/fractol.h include/fractol_types.h \
+ libft/include/libft.h libft/include/libft_types.h
 	@echo "\033[32m    --> Creating obj/ft_tools.o ...\033[0m"
 	@mkdir -p $(OBJDIR);
 	@$(CC) -o $(OBJDIR)ft_tools.o \
